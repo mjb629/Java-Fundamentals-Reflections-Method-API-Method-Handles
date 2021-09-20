@@ -1,0 +1,156 @@
+2018-12-21 15:24:06 jdbc[6]: null
+org.h2.message.DbException: La connexion na pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:197)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:137)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:733)
+	at org.h2.server.web.WebApp.test(WebApp.java:892)
+	at org.h2.server.web.WebApp.process(WebApp.java:221)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:134)
+	at org.h2.server.web.WebThread.run(WebThread.java:90)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLException: La connexion na pas été fermée et a été récupérée par le ramasse miette.
+The connection was not closed by the application and is garbage collected [90018-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 14 more
+2018-12-21 15:31:21 database: flush
+org.h2.message.DbException: Erreur générale: "java.lang.IllegalStateException: The file is locked: nio:D:/pluralsight/10_java-fundamentals-reflection-api-method-handles/workspace-bis/04_Creating-ORM/db-files/db-pluralsight.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:D:/pluralsight/10_java-fundamentals-reflection-api-method-handles/workspace-bis/04_Creating-ORM/db-files/db-pluralsight.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:307)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:95)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2506)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:383)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:364)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2934)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:155)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:100)
+	at org.h2.engine.Database.getPageStore(Database.java:2538)
+	at org.h2.engine.Database.open(Database.java:709)
+	at org.h2.engine.Database.openDatabase(Database.java:286)
+	at org.h2.engine.Database.<init>(Database.java:280)
+	at org.h2.engine.Engine.openSession(Engine.java:66)
+	at org.h2.engine.Engine.openSession(Engine.java:179)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:157)
+	at org.h2.engine.Engine.createSession(Engine.java:140)
+	at org.h2.engine.Engine.createSession(Engine.java:28)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:351)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at org.paumard.reflection.orm.EntityManagerImpl.prepareStatementWith(EntityManagerImpl.java:28)
+	at org.paumard.reflection.orm.EntityManagerImpl.persist(EntityManagerImpl.java:22)
+	at org.paumard.reflection.WritingObjects.main(WritingObjects.java:19)
+Caused by: org.h2.jdbc.JdbcSQLException: Erreur générale: "java.lang.IllegalStateException: The file is locked: nio:D:/pluralsight/10_java-fundamentals-reflection-api-method-handles/workspace-bis/04_Creating-ORM/db-files/db-pluralsight.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:D:/pluralsight/10_java-fundamentals-reflection-api-method-handles/workspace-bis/04_Creating-ORM/db-files/db-pluralsight.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 27 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:D:/pluralsight/10_java-fundamentals-reflection-api-method-handles/workspace-bis/04_Creating-ORM/db-files/db-pluralsight.mv.db [1.4.197/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:870)
+	at org.h2.mvstore.FileStore.open(FileStore.java:173)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
+	... 21 more
+2018-12-21 16:02:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Erreur de syntaxe dans linstruction SQL {0}
+Syntax error in SQL statement {0}; SQL statement:
+select id, name, age from Person where id ? [42000-197]
+2018-12-21 16:02:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Erreur de syntaxe dans linstruction SQL {0}
+Syntax error in SQL statement {0}; SQL statement:
+select id, name, age from Person where id ? [42000-197]
+2018-12-21 19:30:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Colonne "K_ID" non trouvée
+Column "K_ID" not found; SQL statement:
+insert into Person (k_id, c_name, c_age) values (?, ?, ?) [42122-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.table.Table.getColumn(Table.java:682)
+	at org.h2.command.Parser.parseColumn(Parser.java:936)
+	at org.h2.command.Parser.parseColumnList(Parser.java:920)
+	at org.h2.command.Parser.parseInsertGivenTable(Parser.java:1258)
+	at org.h2.command.Parser.parseInsert(Parser.java:1222)
+	at org.h2.command.Parser.parsePrepared(Parser.java:431)
+	at org.h2.command.Parser.parse(Parser.java:335)
+	at org.h2.command.Parser.parse(Parser.java:307)
+	at org.h2.command.Parser.prepareCommand(Parser.java:278)
+	at org.h2.engine.Session.prepareLocal(Session.java:611)
+	at org.h2.engine.Session.prepareCommand(Session.java:549)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1247)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:304)
+	at org.paumard.reflection.orm.AbstractEntityManager.prepareStatementWith(AbstractEntityManager.java:30)
+	at org.paumard.reflection.orm.AbstractEntityManager.persist(AbstractEntityManager.java:23)
+	at org.paumard.reflection.WritingObjects.main(WritingObjects.java:24)
+2018-12-21 19:33:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Colonne "K_ID" non trouvée
+Column "K_ID" not found; SQL statement:
+insert into Person (k_id, c_name, c_age) values (?, ?, ?) [42122-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.table.Table.getColumn(Table.java:682)
+	at org.h2.command.Parser.parseColumn(Parser.java:936)
+	at org.h2.command.Parser.parseColumnList(Parser.java:920)
+	at org.h2.command.Parser.parseInsertGivenTable(Parser.java:1258)
+	at org.h2.command.Parser.parseInsert(Parser.java:1222)
+	at org.h2.command.Parser.parsePrepared(Parser.java:431)
+	at org.h2.command.Parser.parse(Parser.java:335)
+	at org.h2.command.Parser.parse(Parser.java:307)
+	at org.h2.command.Parser.prepareCommand(Parser.java:278)
+	at org.h2.engine.Session.prepareLocal(Session.java:611)
+	at org.h2.engine.Session.prepareCommand(Session.java:549)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1247)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:304)
+	at org.paumard.reflection.orm.AbstractEntityManager.prepareStatementWith(AbstractEntityManager.java:30)
+	at org.paumard.reflection.orm.AbstractEntityManager.persist(AbstractEntityManager.java:23)
+	at org.paumard.reflection.WritingObjects.main(WritingObjects.java:24)
+2018-12-21 19:35:31 database: flush
+org.h2.message.DbException: Erreur générale: "java.lang.IllegalStateException: The file is locked: nio:D:/pluralsight/10_java-fundamentals-reflection-api-method-handles/workspace-bis/04_Creating-ORM/db-files/db-pluralsight.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:D:/pluralsight/10_java-fundamentals-reflection-api-method-handles/workspace-bis/04_Creating-ORM/db-files/db-pluralsight.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:307)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:95)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:2506)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:383)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:364)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2934)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:155)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:100)
+	at org.h2.engine.Database.getPageStore(Database.java:2538)
+	at org.h2.engine.Database.open(Database.java:709)
+	at org.h2.engine.Database.openDatabase(Database.java:286)
+	at org.h2.engine.Database.<init>(Database.java:280)
+	at org.h2.engine.Engine.openSession(Engine.java:66)
+	at org.h2.engine.Engine.openSession(Engine.java:179)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:157)
+	at org.h2.engine.Engine.createSession(Engine.java:140)
+	at org.h2.engine.Engine.createSession(Engine.java:28)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:351)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:103)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at org.paumard.reflection.orm.H2EntityManager.buildConnection(H2EntityManager.java:11)
+	at org.paumard.reflection.orm.AbstractEntityManager.prepareStatementWith(AbstractEntityManager.java:29)
+	at org.paumard.reflection.orm.AbstractEntityManager.persist(AbstractEntityManager.java:23)
+	at org.paumard.reflection.WritingObjects.main(WritingObjects.java:24)
+Caused by: org.h2.jdbc.JdbcSQLException: Erreur générale: "java.lang.IllegalStateException: The file is locked: nio:D:/pluralsight/10_java-fundamentals-reflection-api-method-handles/workspace-bis/04_Creating-ORM/db-files/db-pluralsight.mv.db [1.4.197/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:D:/pluralsight/10_java-fundamentals-reflection-api-method-handles/workspace-bis/04_Creating-ORM/db-files/db-pluralsight.mv.db [1.4.197/7]" [50000-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:D:/pluralsight/10_java-fundamentals-reflection-api-method-handles/workspace-bis/04_Creating-ORM/db-files/db-pluralsight.mv.db [1.4.197/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:870)
+	at org.h2.mvstore.FileStore.open(FileStore.java:173)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
+	... 22 more
